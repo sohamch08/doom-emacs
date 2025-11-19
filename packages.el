@@ -54,5 +54,5 @@
 ;; (unpin! t)
 (package! tldr)
 
-(use-package rainbow-delimiters
-  :hook (prog-mode . rainbow-delimiters-mode))
+(package! rainbow-delimiters)
+(package! golden-ratio)

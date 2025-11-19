@@ -147,7 +147,7 @@
       :v "k" #'evil-previous-visual-line)
 (setq yas-snippet-dirs '("~/.config/doom/snippets"))
 
-;; (setq lsp-tex-server 'digestif)
+(setq lsp-tex-server 'digestif)
 (setq-hook! 'LaTeX-mode-hook
   +lsp-company-backends
   '(:separate
@@ -158,3 +158,19 @@
     company-files
     company-dabbrev
     company-dabbrev-code))
+
+
+(use-package rainbow-delimiters
+  :hook ((LaTeX-mode . rainbow-delimiters-mode)
+         (latex-mode . rainbow-delimiters-mode)))
+
+(use-package golden-ratio
+  :ensure t
+  :hook (after-init . golden-ratio-mode))
+(after! golden-ratio
+  ;; Resize after window moves with Evil
+  (dolist (cmd '(evil-window-left
+                 evil-window-right
+                 evil-window-up
+                 evil-window-down))
+    (add-to-list 'golden-ratio-extra-commands cmd)))
