@@ -74,6 +74,10 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+;; (defvar read-passwd-map minibuffer-local-map)
+(unless (boundp 'read-passwd-map)
+  (defvar read-passwd-map (make-sparse-keymap)))
+
 (add-hook 'focus-out-hook 'save-buffer)
 ;; (setq pdf-info-epdfinfo-program
 ;;       (car (file-expand-wildcards "/nix/store/43hd59byk82cpxlkbm91j027j4rqnrp8-emacs-pdf-tools-20240429.407/share/emacs/site-lisp/elpa/pdf-tools-*/epdfinfo")))
