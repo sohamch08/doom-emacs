@@ -55,4 +55,7 @@
 (package! tldr)
 
 (package! rainbow-delimiters)
-(package! golden-ratio)
+;; (package! golden-ratio)
+(package! all-the-icons)
+(package! all-the-icons-nerd-fonts)
+(package! kind-icon)
