@@ -82,16 +82,10 @@
 ;; Add pdf-tools Elisp to load-path
 
 
-(let ((my-password (read-passwd "Enter your password: " t)))
+(let ((my-password (read-passwd "" t)))
   (if my-password
       (message "Password successfully entered.")
     (message "Passwords did not match or were not entered.")))
-
-
-;; (after! tex
-;;   (setq TeX-view-program-selection nil)
-;;   (setq +latex-viewers '(pdf-tools skim))
-;;   (load! "$HOME/.emacs.d/modules/lang/latex/+viewers"))
 
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
@@ -99,23 +93,8 @@
 ;; Asks master file when first time opened a .tex.file. Lets auctex know 'For all files in the same directory, remember and reuse a single master file'
 (setq-default TeX-master 'shared)
 
-;; Auto enables LaTeX-mode for tex file
 (add-to-list 'auto-mode-alist '("\\.tex$" . LaTeX-mode))
 
-;; Enable automatic correlation
-;; (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
-;; (add-hook 'LaTeX-mode-hook 'TeX-PDF-mode)
-;; (setq TeX-source-correlate-method 'synctex)
-
-;; (after! tex
-;;   (setq TeX-source-correlate-mode t)  ;; Enable synctex correlation
-;;   (setq TeX-source-correlate-start-server t) ;; Start server for inverse search
-;;   (setq TeX-view-program-selection
-;;         '((output-pdf "PDF Tools")))
-;;   (setq TeX-view-program-list
-;;         '(("PDF Tools" TeX-pdf-tools-sync-view)))
-;;   (add-hook 'TeX-after-compilation-finished-functions
-;;             #'TeX-revert-document-buffer))
 (after! tex
   ;; Enable source correlation (synctex)
   (setq TeX-source-correlate-mode t
@@ -165,7 +144,7 @@
 ;;     company-dabbrev-code))
 
 
-(use-package rainbow-delimiters
+(use-package! rainbow-delimiters
   :hook ((LaTeX-mode . rainbow-delimiters-mode)
          (latex-mode . rainbow-delimiters-mode)))
 
